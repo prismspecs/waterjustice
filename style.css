@@ -1,0 +1,724 @@
+/*
+Theme Name: waterjustice
+Author: Grayson Earle
+Version: 2023
+Requires at least: 5.2
+Tested up to: 6.1
+Requires PHP: 7.0
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    line-height: 1
+}
+
+a {
+    text-decoration-skip-ink: auto
+}
+
+a[href^="tel"] {
+    color: inherit;
+    text-decoration: none
+}
+
+button {
+    outline: 0
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none
+}
+
+q {
+    display: inline;
+    font-style: italic
+}
+
+q:before {
+    content: '"';
+    font-style: normal
+}
+
+q:after {
+    content: '"';
+    font-style: normal
+}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="search"],
+input[type="password"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+th,
+td {
+    padding: 2px
+}
+
+big {
+    font-size: 120%
+}
+
+small,
+sup,
+sub {
+    font-size: 80%
+}
+
+sup {
+    vertical-align: super
+}
+
+sub {
+    vertical-align: sub
+}
+
+dd {
+    margin-left: 20px
+}
+
+kbd,
+tt {
+    font-family: courier;
+    font-size: 12px
+}
+
+ins {
+    text-decoration: underline
+}
+
+del,
+strike,
+s {
+    text-decoration: line-through
+}
+
+dt {
+    font-weight: bold
+}
+
+address,
+cite,
+var {
+    font-style: italic
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent
+}
+
+.sticky {}
+
+.bypostauthor {}
+
+.wp-caption {}
+
+.wp-caption-text {}
+
+.gallery-caption {}
+
+.alignright {}
+
+.alignleft {}
+
+.aligncenter {}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+    word-break: normal
+}
+
+.screen-reader-text:focus {
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .6);
+    clip: auto !important;
+    -webkit-clip-path: none;
+    clip-path: none;
+    color: #007acc;
+    display: block;
+    font-size: 14px;
+    font-size: .875rem;
+    font-weight: 700;
+    height: auto;
+    right: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000
+}
+
+.skip-link {
+    left: -9999rem;
+    top: 2.5rem;
+    z-index: 999999999;
+    text-decoration: underline
+}
+
+.skip-link:focus {
+    display: block;
+    left: 6px;
+    top: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    z-index: 100000;
+    right: auto
+}
+
+.visually-hidden:not(:focus):not(:active),
+.form-allowed-tags:not(:focus):not(:active) {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Merriweather', serif;
+}
+
+.placeholder {
+    background-image: url("images/placeholder1.jpg");
+    background-repeat: repeat;
+}
+
+/* ---------------- BEGIN MY STUFF ---------------- */
+
+
+
+/* ---------------- UTILITY ---------------- */
+* {
+    box-sizing: border-box;
+}
+
+i {
+    font-size: 3rem;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.notfull {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.grey {
+    background-color: #eee;
+}
+
+.align-bottom {
+    align-self: flex-end;
+
+}
+
+.box3d {
+    box-sizing: border-box;
+    background-color: grey;
+    padding: 3px 5px 5px 5px;
+    margin: 10px 30px 10px 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.box3d:hover {
+    transition: all 0.3s ease-in-out;
+    transform: translate(10px, 10px);
+    box-shadow: -1px -1px 0px #999, -2px -2px 0px #999, -3px -3px 0px #999, -4px -4px 0px #999, -5px -5px 0px #999, -6px -6px 0px #999, -7px -7px 0px #999, -8px -8px 0px #999, -9px -9px 0px #999, -10px -10px 0px #999;
+}
+
+
+/* test-image should take up entire row */
+.test-image {
+    background-image: url('images/placeholder1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 400px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.padding-wrapper {
+    padding: 20px;
+    box-sizing: border-box;
+    width: 300px;
+    height: 400px;
+}
+
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #333; */
+    padding: 10px 20px;
+    color: #fff;
+    font-family: "Ubuntu", sans-serif;
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+}
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+.navbar-dropper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #000;
+    font-family: "Ubuntu", sans-serif;
+    transition:all 0.3s ease-in-out;
+    position:fixed;
+    background-color: #fff;
+    width: 100%;
+    top:-40px;
+    z-index: 999;
+    opacity:0;
+}
+
+.navbar-dropper.visible {
+    opacity:1;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adjust values as needed */
+    top:0px;
+}
+
+.navbar-dropper a {
+    text-decoration: none;
+    color: #000;
+}
+.logo img {
+    height: 40px;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+
+
+/* Responsive Menu Styles */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.toggle-icon::before {
+    content: "\f0c9";
+    /* FontAwesome icon for bars (you can change this) */
+    font-family: FontAwesome;
+    /* Use a font icon library like FontAwesome */
+}
+
+.nav-menu {
+    display: flex;
+    z-index: 20;
+}
+
+
+/* Media query for mobile screens */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        transition: all 0.3s;
+    }
+
+    .menu-expanded .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        /* background-color: #333; */
+        top: 50px;
+        left: 0;
+        width: 100%;
+    }
+
+    .menu-expanded .nav-menu li {
+        margin: 0;
+        padding: 10px 20px;
+        border-bottom: 1px solid #555;
+    }
+
+    .menu-expanded .toggle-icon::before {
+        content: "\f00d";
+    }
+    .nav-container-dropper .nav-menu {
+        background-color:#fff;
+    }
+
+}
+
+
+
+/* ---------------- Hero section styles ---------------- */
+.hero {
+    position: relative;
+    background-image: url('images/backgroundtest.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    color: #fff;
+}
+
+.hero-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    text-shadow: 2px 2px 3px #000000;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+}
+
+.hero-caption h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+
+
+/* ---------------- QUOTE SECTION ---------------- */
+.quote {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+
+/* ---------------- PDF DOWNLOAD SECTION ---------------- */
+
+.pdf-link {
+    /* flex: 1; */
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    cursor:pointer;
+    max-width: 200px;
+}
+
+.pdf-link:hover {
+    background-color: #fdd;
+}
+.pdf-link p {
+    margin-top:1rem;
+}
+
+/* ---------------- WATER STORIES ---------------- */
+.water-story {
+    height: 100%;
+    width: 100%;
+    /* background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex; */
+    display: flex;
+}
+
+.story-shadow,
+.water-story-image {
+    display: block;
+    position: absolute;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+}
+
+.story-shadow {
+    background-image: url('images/placeholder1.jpg');
+    background-size: 20% auto;
+    /* 20% width and auto height to scale down */
+    background-repeat: repeat;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+
+}
+
+.water-story-image {
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.water-story-image img {
+    width: 100%;
+    height: auto;
+}
+
+.swiper {
+    width: 90%;
+    /* height: 300px; */
+    margin-top: 1rem;
+    /* padding: 40px 10px; */
+    /* overflow: visible; */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none;
+}
+
+.swiper-button-prev i, .swiper-button-next i {
+    color: #ededed;
+    font-size:2rem;
+    text-shadow: 2px 2px 2px #000000;
+}
+.swiper-slide {
+    /* padding:1rem; */
+    /* box shadow */
+    /* box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); */
+    /* width: 260px;
+    height: 340px; */
+}
+
+.swiper-slide a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.slide-title {
+    font-family: "Merriweather", serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    /* margin-bottom: .5rem; */
+}
+
+.slide-author {
+    font-family: "Ubuntu";
+    font-size: 1.4rem;
+    /* font-style: italic; */
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.slide-date {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.water-story-text {
+    z-index: 99;
+    /* drop shadow */
+    text-shadow: 2px 2px 3px #000000;
+}
+
+/* swiper fixes */
+.swiper {
+    position:unset;
+}
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: var(--swiper-pagination-bottom,88px);
+}
+
+.swiper-button-next, .swiper-button-prev {
+    position: absolute;
+    top: var(--swiper-navigation-top-offset,73%);
+}
+.swiper-pagination-bullet-active {
+    background-color: #000 !important;
+}
+.swiper-button-next {
+    right: var(--swiper-navigation-sides-offset,1.5%);
+    left: auto;
+}
+.swiper-button-prev {
+    left: var(--swiper-navigation-sides-offset,1.5%);
+    right: auto;
+}
+/* ---------------- WIP ---------------- */
+.wip {
+    margin-top: 2rem !important;
+}
+
+.wip-text {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+
+
+
