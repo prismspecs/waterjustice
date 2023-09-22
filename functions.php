@@ -15,52 +15,143 @@ function blankslate_setup()
     }
     register_nav_menus(array('main-menu' => esc_html__('Main Menu', 'blankslate')));
 }
-add_action('admin_notices', 'blankslate_notice');
-function blankslate_notice()
-{
-    $user_id = get_current_user_id();
-    $admin_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $param = (count($_GET)) ? '&' : '?';
-    if (!get_user_meta($user_id, 'blankslate_notice_dismissed_8') && current_user_can('manage_options'))
-        echo '<div class="notice notice-info"><p><a href="' . esc_url($admin_url), esc_html($param) . 'dismiss" class="alignright" style="text-decoration:none"><big>' . esc_html__('Ⓧ', 'blankslate') . '</big></a>' . wp_kses_post(__('<big><strong>📝 Thank you for using BlankSlate!</strong></big>', 'blankslate')) . '<br /><br /><a href="https://wordpress.org/support/theme/blankslate/reviews/#new-post" class="button-primary" target="_blank">' . esc_html__('Review', 'blankslate') . '</a> <a href="https://github.com/tidythemes/blankslate/issues" class="button-primary" target="_blank">' . esc_html__('Feature Requests & Support', 'blankslate') . '</a> <a href="https://calmestghost.com/donate" class="button-primary" target="_blank">' . esc_html__('Donate', 'blankslate') . '</a></p></div>';
-}
-add_action('admin_init', 'blankslate_notice_dismissed');
-function blankslate_notice_dismissed()
-{
-    $user_id = get_current_user_id();
-    if (isset($_GET['dismiss']))
-        add_user_meta($user_id, 'blankslate_notice_dismissed_8', 'true', true);
-}
+// add_action('admin_notices', 'blankslate_notice');
+// function blankslate_notice()
+// {
+//     $user_id = get_current_user_id();
+//     $admin_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+//     $param = (count($_GET)) ? '&' : '?';
+//     if (!get_user_meta($user_id, 'blankslate_notice_dismissed_8') && current_user_can('manage_options'))
+//         echo '<div class="notice notice-info"><p><a href="' . esc_url($admin_url), esc_html($param) . 'dismiss" class="alignright" style="text-decoration:none"><big>' . esc_html__('Ⓧ', 'blankslate') . '</big></a>' . wp_kses_post(__('<big><strong>📝 Thank you for using BlankSlate!</strong></big>', 'blankslate')) . '<br /><br /><a href="https://wordpress.org/support/theme/blankslate/reviews/#new-post" class="button-primary" target="_blank">' . esc_html__('Review', 'blankslate') . '</a> <a href="https://github.com/tidythemes/blankslate/issues" class="button-primary" target="_blank">' . esc_html__('Feature Requests & Support', 'blankslate') . '</a> <a href="https://calmestghost.com/donate" class="button-primary" target="_blank">' . esc_html__('Donate', 'blankslate') . '</a></p></div>';
+// }
+// add_action('admin_init', 'blankslate_notice_dismissed');
+// function blankslate_notice_dismissed()
+// {
+//     $user_id = get_current_user_id();
+//     if (isset($_GET['dismiss']))
+//         add_user_meta($user_id, 'blankslate_notice_dismissed_8', 'true', true);
+// }
 
 
 
 
-
+add_post_type_support('page', 'excerpt');
 
 add_action('wp_enqueue_scripts', 'blankslate_enqueue');
 function blankslate_enqueue()
 {
-    wp_enqueue_style('swiper-style', get_template_directory_uri() . '/swiper.css');
+    wp_enqueue_style('swiper-style', "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css");
     wp_enqueue_style('blankslate-style', get_stylesheet_uri());
     wp_enqueue_script('jquery');
-    wp_enqueue_script('swiper-script', get_template_directory_uri() . '/js/swiper.js', array('jquery'), '1.0', true);
-    wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js', array('jquery'), '1.0', true);
+    // enqueue swiper.js from CDN
+
+    wp_enqueue_script('swiper-script', "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js");
+    wp_enqueue_script('main-script', get_template_directory_uri() . '/js/main.js');
+    wp_enqueue_style('load-fa', 'https://use.fontawesome.com/releases/v6.0.0/css/all.css');
 }
 
-
-
-
-
-
-function enqueue_google_fonts()
+function display_photo_attribution($do_description)
 {
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Ubuntu:ital,wght@0,300;0,500;1,300&display=swap');
+    $post_id = get_the_ID();
+    $thumbnail_id = get_post_thumbnail_id($post_id);
+    $thumbnail_title = get_post($thumbnail_id)->post_title;
+    $thumbnail_caption = get_post($thumbnail_id)->post_excerpt;
+    $thumbnail_description = get_post($thumbnail_id)->post_content;
+    $thumbnail_creator = get_post_meta($thumbnail_id, 'creator', true);
 
-    // Add preconnect attributes
-    wp_resource_hints('https://fonts.googleapis.com', 'dns-prefetch');
-    wp_resource_hints('https://fonts.gstatic.com', 'preconnect');
+    // if it has either a caption or description
+    if ($thumbnail_creator || $thumbnail_description) {
+        echo '<p class="photo-attribution">';
+    }
+
+    if ($thumbnail_creator) {
+        // remove any trailing whitespace in thumbnail_creator
+        $thumbnail_creator = trim($thumbnail_creator);
+        echo $thumbnail_creator;
+
+        // if there is a description
+        if ($thumbnail_description && $do_description) {
+            echo ', ' . $thumbnail_description;
+        }
+    }
+
+    // if there is a description but no caption
+    if (!$thumbnail_creator && $thumbnail_description) {
+        $thumbnail_description = trim($thumbnail_description);
+        echo $thumbnail_description;
+    }
+
+    if ($thumbnail_creator || $thumbnail_description) {
+        echo '</p>';
+    }
 }
-add_action('wp_enqueue_scripts', 'enqueue_google_fonts');
+
+function display_author() {
+
+    $the_author = get_field('author_selection');
+
+    // if no author is selected return
+    if (!$the_author) {
+        return;
+    }
+
+    // the_author is a post object, so get its title
+    $the_author_name = $the_author->post_title;
+    // and post id
+    $the_author_id = $the_author->ID;
+
+    echo '<div class="author">by ';
+    echo '<span class="author-hover" data-author-id="'. $the_author_id . '">' . $the_author_name . '</span></div>';
+
+}
+
+// custom field for attachments
+function add_custom_attachment_field($form_fields, $post) {
+    $custom_value = get_post_meta($post->ID, 'creator', true);
+    
+    // Add your custom field
+    $form_fields['custom_attachment_field'] = array(
+        'label' => __('Creator'),
+        'input' => 'text',
+        'value' => esc_attr($custom_value),
+    );
+
+    return $form_fields;
+}
+add_filter('attachment_fields_to_edit', 'add_custom_attachment_field', 10, 2);
+
+
+function save_custom_attachment_field($attachment_id) {
+    if (isset($_REQUEST['attachments'][$attachment_id]['custom_attachment_field'])) {
+        $custom_value = $_REQUEST['attachments'][$attachment_id]['custom_attachment_field'];
+        update_post_meta($attachment_id, 'creator', $custom_value);
+    }
+}
+add_action('edit_attachment', 'save_custom_attachment_field');
+
+
+
+// add custom post type for author bios
+function create_posttype_authors()
+{
+    register_post_type(
+        'authors',
+        // CPT Options
+        array(
+            'labels' => array(
+                'name' => __('Authors'),
+                'singular_name' => __('Author')
+            ),
+            'public' => true,
+            'has_archive' => false,
+            'show_in_rest' => true,
+            'rewrite' => array('slug' => 'author'),
+        )
+    );
+}
+// Hooking up our function to theme setup
+add_action('init', 'create_posttype_authors');
+
 
 function enqueue_font_awesome()
 {
@@ -72,9 +163,9 @@ add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
 add_action('wp_footer', 'blankslate_footer');
 function blankslate_footer()
 {
-?>
+    ?>
     <script>
-        jQuery(document).ready(function($) {
+        jQuery(document).ready(function ($) {
             var deviceAgent = navigator.userAgent.toLowerCase();
             if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
                 $("html").addClass("ios");
@@ -97,7 +188,7 @@ function blankslate_footer()
             }
         });
     </script>
-<?php
+    <?php
 }
 add_filter('document_title_separator', 'blankslate_document_title_separator');
 function blankslate_document_title_separator($sep)
@@ -172,14 +263,16 @@ function blankslate_image_insert_override($sizes)
 add_action('widgets_init', 'blankslate_widgets_init');
 function blankslate_widgets_init()
 {
-    register_sidebar(array(
-        'name' => esc_html__('Sidebar Widget Area', 'blankslate'),
-        'id' => 'primary-widget-area',
-        'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-        'after_widget' => '</li>',
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>',
-    ));
+    register_sidebar(
+        array(
+            'name' => esc_html__('Sidebar Widget Area', 'blankslate'),
+            'id' => 'primary-widget-area',
+            'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h3 class="widget-title">',
+            'after_title' => '</h3>',
+        )
+    );
 }
 add_action('wp_head', 'blankslate_pingback_header');
 function blankslate_pingback_header()
@@ -197,9 +290,11 @@ function blankslate_enqueue_comment_reply_script()
 }
 function blankslate_custom_pings($comment)
 {
-?>
-    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>"><?php echo esc_url(comment_author_link()); ?></li>
-<?php
+    ?>
+    <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+        <?php echo esc_url(comment_author_link()); ?>
+    </li>
+    <?php
 }
 add_filter('get_comments_number', 'blankslate_comment_count', 0);
 function blankslate_comment_count($count)
