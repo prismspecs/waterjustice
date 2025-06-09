@@ -1,0 +1,1877 @@
+/*
+Theme Name: waterjustice
+Author: Grayson Earle
+Version: 2023
+Requires at least: 5.2
+Tested up to: 6.1
+Requires PHP: 7.0
+*/
+
+@font-face {
+    font-family: 'Faune';
+    font-style: normal;
+    font-weight: 400;
+    /* Regular */
+    src: local('Faune'), url('fonts/Faune-TextRegular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Faune';
+    font-style: italic;
+    font-weight: 400;
+    /* Italic */
+    src: local('Faune Text Italic'), url('fonts/Faune-TextItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Faune';
+    font-style: normal;
+    font-weight: 300;
+    /* Thin */
+    src: local('Faune Display Thin'), url('fonts/Faune-DisplayThin.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Faune';
+    font-style: normal;
+    font-weight: 700;
+    /* Bold */
+    src: local('Faune Text Bold'), url('fonts/Faune-TextBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Faune';
+    font-style: italic;
+    font-weight: 700;
+    /* Bold Italic */
+    src: local('Faune Display Bold Italic'), url('fonts/Faune-DisplayBoldItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Faune';
+    font-style: normal;
+    font-weight: 900;
+    /* Black */
+    src: local('Faune Display Black'), url('fonts/Faune-DisplayBlack.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: italic;
+    font-weight: 900;
+    src: local('Neue Haas Display Black Italic'), url('fonts/NeueHaasDisplay-BlackItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Neue Haas Display Black'), url('fonts/NeueHaasDisplay-Black.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Neue Haas Display Bold Italic'), url('fonts/NeueHaasDisplay-BoldItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Neue Haas Display Bold'), url('fonts/NeueHaasDisplay-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: italic;
+    font-weight: 500;
+    src: local('Neue Haas Display Medium Italic'), url('fonts/NeueHaasDisplay-MediumItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Neue Haas Display Medium'), url('fonts/NeueHaasDisplay-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Neue Haas Display Light Italic'), url('fonts/NeueHaasDisplay-LightItalic.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Neue Haas Display Light'), url('fonts/NeueHaasDisplay-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Neue Haas Display Regular'), url('fonts/NeueHaasDisplay-Roman.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Neue Haas Display';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Neue Haas Display Thin'), url('fonts/NeueHaasDisplay-Thin.woff') format('woff');
+}
+
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+
+a {
+    text-decoration-skip-ink: auto;
+    color: var(--link);
+}
+
+a[href^="tel"] {
+    color: inherit;
+    text-decoration: none
+}
+
+button {
+    outline: 0
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none
+}
+
+q {
+    display: inline;
+    font-style: italic
+}
+
+q:before {
+    content: '"';
+    font-style: normal
+}
+
+q:after {
+    content: '"';
+    font-style: normal
+}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="search"],
+input[type="password"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+th,
+td {
+    padding: 2px
+}
+
+big {
+    font-size: 120%
+}
+
+small,
+sup,
+sub {
+    font-size: 80%
+}
+
+sup {
+    vertical-align: super
+}
+
+sub {
+    vertical-align: sub
+}
+
+dd {
+    margin-left: 20px
+}
+
+kbd,
+tt {
+    font-family: courier;
+    font-size: 12px
+}
+
+ins {
+    text-decoration: underline
+}
+
+del,
+strike,
+s {
+    text-decoration: line-through
+}
+
+dt {
+    font-weight: bold
+}
+
+address,
+cite,
+var {
+    font-style: italic
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent
+}
+
+.sticky {}
+
+.bypostauthor {}
+
+.wp-caption {}
+
+.wp-caption-text {}
+
+.gallery-caption {}
+
+.alignright {}
+
+.alignleft {}
+
+.aligncenter {}
+
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+    word-break: normal
+}
+
+.screen-reader-text:focus {
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .6);
+    clip: auto !important;
+    -webkit-clip-path: none;
+    clip-path: none;
+    color: #007acc;
+    display: block;
+    font-size: 14px;
+    font-size: .875rem;
+    font-weight: 700;
+    height: auto;
+    right: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000
+}
+
+.skip-link {
+    left: -9999rem;
+    top: 2.5rem;
+    z-index: 999999999;
+    text-decoration: underline
+}
+
+.skip-link:focus {
+    display: block;
+    left: 6px;
+    top: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    z-index: 100000;
+    right: auto
+}
+
+.visually-hidden:not(:focus):not(:active),
+.form-allowed-tags:not(:focus):not(:active) {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap
+}
+
+body {
+    background-color: #fff;
+    font-family: "Neue Haas Display", sans-serif;
+    color: var(--text);
+}
+
+.placeholder {
+    background-image: url("images/placeholder1.jpg");
+    background-repeat: repeat;
+}
+
+/* ---------------- BEGIN MY STUFF ---------------- */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    margin-top: auto;
+}
+
+
+/* ---------------- COLORS ---------------- */
+
+:root {
+    --highlight: #cde;
+    --link: #856d6d;
+    --text: #334;
+    /* --white: #ffffff; */
+}
+
+
+/* ---------------- UTILITY ---------------- */
+* {
+    box-sizing: border-box;
+}
+
+.center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+#fullcover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 8;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+#fullcover.visible,
+#fullcover.visible2 {
+    opacity: .5;
+}
+
+#footnote-overlay,
+#author-overlay {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 50vw;
+    min-width: 40vw;
+    overflow-wrap: break-word;
+    background-color: #fff;
+    z-index: 9;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    border: 2px solid transparent;
+    padding: .5rem;
+    font-size: .9rem;
+}
+
+#author-overlay {
+    max-width: 80vw;
+}
+
+#footnote-overlay.visible,
+#footnote-overlay.visible2,
+#author-overlay.visible,
+#author-overlay.visible2 {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#footnote-overlay.visible,
+#footnote-overlay.visible2,
+#author-overlay.visible,
+#author-overlay.visible2 {
+    /* transition: transform 0.3s ease-in-out;
+    transform: translate(6px, 6px); */
+    transition: opacity 0.2s ease-in-out;
+    box-shadow: -4px -4px 0px var(--highlight);
+    border: var(--highlight) solid 2px;
+}
+
+
+.text .clickable-title a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.text .clickable-title a:hover {
+    color: var(--text);
+    text-decoration: underline;
+}
+
+.clickable-title a {
+    color: #fff;
+    transition: color 0.2s ease-in-out;
+}
+
+.clickable-title a:hover {
+    color: var(--link);
+    color: var(--highlight);
+}
+
+i {
+    font-size: 3rem;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.center-center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.notfull {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.grey {
+    background-color: #eee;
+}
+
+.align-bottom {
+    align-self: flex-end;
+
+}
+
+.box3d {
+    /* box-sizing: border-box; */
+    background-color: grey;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.box3d:hover {
+    transition: all 0.3s ease-in-out;
+    transform: translate(6px, 6px);
+    /* box-shadow: -1px -1px 0px #999, -2px -2px 0px #999, -3px -3px 0px #999, -4px -4px 0px #999, -5px -5px 0px #999, -6px -6px 0px #999, -7px -7px 0px #999, -8px -8px 0px #999, -9px -9px 0px #999, -10px -10px 0px #999; */
+    box-shadow: -6px -6px 0px var(--highlight);
+    border: var(--highlight) solid 2px;
+}
+
+
+/* test-image should take up entire row */
+.test-image {
+    background-image: url('images/placeholder1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 50vh;
+}
+
+em {
+    font-style: italic;
+}
+
+h1 {
+    font-family: "Faune", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: "Faune", sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 2.5rem;
+    /* margin-top: 2rem; */
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+.padding-wrapper {
+    /* padding: 20px; */
+    box-sizing: border-box;
+    width: 300px;
+    height: 400px;
+}
+
+
+sup,
+sub {
+    vertical-align: baseline;
+    position: relative;
+    top: -0.4em;
+}
+
+sub {
+    top: 0.4em;
+}
+
+.image-with-text {
+    position: relative;
+}
+
+.image-overlay-text {
+    color: #fff;
+    text-shadow: 2px 2px 3px #000000;
+    position: absolute;
+    bottom: 0;
+    padding: 0px 2rem 2rem 2rem;
+}
+
+.photo-attribution {
+    margin-bottom: -0.25rem;
+    font-style: italic;
+    opacity: .5;
+}
+
+.photo-attribution:hover {
+    opacity: 1;
+    cursor: cell;
+}
+
+.photo-attribution::before {
+    content: "artist: ";
+}
+
+.wiggle {
+    animation: wiggle-animation .3s ease-in-out infinite;
+}
+
+@keyframes wiggle-animation {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-1px);
+    }
+
+    50% {
+        transform: translateX(0px);
+    }
+
+    75% {
+        transform: translateX(1px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 10px 20px; */
+    padding: 0.7rem;
+    color: #fff;
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+}
+
+.navbar,
+.navbar-dropper {
+    font-family: "Neue Haas Display", sans-serif;
+    font-weight: 500;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-dropper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    color: var(--text);
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    top: -40px;
+    z-index: 999;
+    opacity: 0;
+}
+
+.navbar-dropper:not(.visible) {
+    pointer-events: none;
+}
+
+.navbar-dropper.visible {
+    opacity: 1;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adjust values as needed */
+    top: 0px;
+}
+
+.navbar-dropper a {
+    text-decoration: none;
+    color: var(--text);
+}
+
+.logo img {
+    /* height: 40px; */
+    /* max-height: 61px; */
+}
+
+.navbar-dropper .logo img {
+    height: 61px;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    /* display: inline-block; */
+    margin-right: 20px;
+    /* text-shadow: 1px 1px 3px #000000; */
+}
+
+.navbar-dropper .nav-menu li {
+    text-shadow: none;
+}
+
+#menu_stories,
+#menu_reports {
+    scroll-margin-top: 80px;
+}
+
+
+/* WATER STORIES MENU STUFF */
+
+/* Indent each submenu */
+.water-stories-dropper li li {
+    margin-left: 1em;
+}
+
+/* The "main" sub-menu should not displace the other nav items */
+.water-stories-dropper .sub-menu {
+    position: absolute;
+    display: block;
+    max-height: 0;
+    /* Initially collapsed */
+    overflow: hidden;
+    /* Prevents content from overflowing when collapsed */
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    /* Smooth slide and fade */
+    opacity: 0;
+    /* Initially invisible */
+    /* remove drop shadow */
+}
+
+.sub-menu * {
+    text-shadow: none !important;
+}
+
+/* Show submenu when active with animation */
+.water-stories-dropper .sub-menu.active {
+    max-height: 500px;
+    /* Arbitrary max height large enough to fit content */
+    opacity: 1;
+    /* Fully visible */
+}
+
+/* Ensure that nested submenus push content instead of overlapping */
+.water-stories-dropper .sub-menu .sub-menu {
+    position: relative;
+}
+
+/* Add arrow before the text for items that have a submenu */
+.water-stories-dropper li:has(.sub-menu)>a::before {
+    content: "▶";
+    font-size: 0.8em;
+    margin-right: 5px;
+    display: inline-block;
+    width: 1.2em;
+    /* Matches the padding for no-children items */
+    text-align: center;
+    /* Center-aligns the arrow */
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Change arrow when submenu is active */
+.water-stories-dropper li:has(.sub-menu.active)>a::before {
+    content: "▼";
+}
+
+/* Add space for items with no children */
+.water-stories-dropper li:not(:has(.sub-menu))>a {
+    padding-left: 1.2em;
+    /* Matches the arrow size */
+}
+
+
+
+
+
+
+
+
+/* Responsive Menu Styles */
+.menu-toggle,
+.menu-toggle-dropper {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.toggle-icon::before {
+    content: "\f0c9";
+    /* FontAwesome icon for bars (you can change this) */
+    font-family: FontAwesome;
+    /* Use a font icon library like FontAwesome */
+}
+
+.nav-menu {
+    display: flex;
+    z-index: 20;
+}
+
+
+
+/* ---------------- Hero section styles ---------------- */
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    height: 100vh;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+
+/* Vertically centered hero text */
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Adjust font size as needed */
+    color: #fff;
+    text-shadow: 2px 2px 5px #000000;
+    text-align: center;
+    width: 80%;
+    font-family: "Neue Haas Display", sans-serif;
+}
+
+.hero-text a {
+    /* unset everything */
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero-text h1 {
+    /* font-size: 2rem; */
+    /* font-family: "Faune", sans-serif; */
+    margin-bottom: .5rem;
+}
+
+/* Caption remains at the bottom */
+.hero-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    text-shadow: 2px 2px 3px #000000;
+}
+
+.hero-caption h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+#random-question {
+    font-size: 1.2rem;
+}
+
+
+/* ---------------- QUOTE/QUESTION SECTION ---------------- */
+.quote {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--link);
+    font-style: italic;
+    font-size: 1.3rem;
+    max-width: 70%;
+    opacity: .6;
+    cursor: help;
+}
+
+.quote:hover {
+    opacity: 1;
+
+}
+
+/* ---------------- PDF DOWNLOAD SECTION ---------------- */
+.pdf {
+    margin-top: 2rem;
+}
+
+.pdf p {
+    margin: 0;
+}
+
+.pdf-link {
+    /* flex: 1; */
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    max-width: 280px;
+    margin-top: 2rem;
+    /* padding: 3px 5px 5px 5px; */
+    /* margin: 10px 30px 10px 30px; */
+}
+
+.pdf-link-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 240px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.pdf-link:hover {}
+
+.pdf-link p {
+    margin-top: 1rem;
+}
+
+/* ---------------- WATER STORIES ---------------- */
+#menu_stories {
+    margin-top: 2rem;
+}
+
+.water-story {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    opacity: .9;
+    transition: all 0.3s ease-in-out;
+    padding: .5rem;
+}
+
+.water-story:hover {
+    opacity: 1;
+}
+
+.water-story:hover .water-story-text {
+    margin-bottom: .25rem;
+}
+
+.story-shadow,
+.water-story-image {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.story-shadow {
+    background-image: url('images/water2.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+
+}
+
+.water-story-image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.water-story-image img {
+    width: 100%;
+    height: auto;
+}
+
+.swiper {
+    width: 90%;
+    /* height: 300px; */
+    /* margin-top: 1rem; */
+    /* padding-bottom: 2rem; */
+    /* padding: 40px 10px; */
+    /* overflow: visible; */
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none;
+}
+
+.swiper-button-prev i,
+.swiper-button-next i {
+    color: #ededed;
+    font-size: 2rem;
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.swiper-slide {
+    cursor: pointer;
+}
+
+.swiper-slide a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.slide-title {
+    font-family: "Neue Haas Display", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: .25rem;
+}
+
+.slide-author {
+    font-family: "Neue Haas Display", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-shadow: 2px 2px 1.5px #000000;
+}
+
+.slide-date {
+    font-size: 0.8rem;
+    font-family: "Neue Haas Display", sans-serif;
+}
+
+.water-story-text {
+    z-index: 99;
+    text-shadow: 2px 2px 2px #000000;
+    transition: all 0.2s ease-in-out;
+}
+
+/* ---------------- WIP ---------------- */
+.spread {
+    color: #fff;
+}
+
+.inner-spread {
+    padding: 4rem 0;
+    background-size: cover;
+}
+
+.inner-spread .blurb {
+    margin-bottom: 1rem;
+}
+
+/* ---------------- TOC ---------------- */
+.toc {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.toc ul {
+    margin-left: 1rem;
+    list-style: inside;
+    list-style-type: none;
+}
+
+.toc a {
+    text-decoration: none;
+    color: var(--link);
+    transition: all 0.1s ease-in-out;
+    padding: 0.1rem;
+    margin-bottom: 1rem;
+}
+
+.toc li {
+    /* margin-bottom: .5rem; */
+}
+
+.toc ul ul li {
+    margin-left: 1rem;
+}
+
+.toc-text {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 1rem 0px;
+}
+
+.toc-link {
+    display: inline-block
+}
+
+.toc-section-title {
+    cursor: text;
+}
+
+.toc-highlight {
+    background-color: #fff;
+
+}
+
+/* ---------------- ALL TEXTS ---------------- */
+strong {
+    font-weight: 700;
+}
+
+.text {
+    margin-top: 2rem;
+    text-align: justify;
+}
+
+.text .author {
+    width: 100%;
+    color: #856d6d;
+}
+
+.text .date {
+    font-size: .8rem;
+    opacity: .5;
+}
+
+.text,
+li,
+.fn a {
+    /* scroll-margin-top: 70px; */
+
+}
+
+.article ol {
+    list-style: decimal;
+    list-style-position: inside;
+    font-size: 1rem;
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.article ol li {
+    margin-top: 1rem;
+}
+
+.fn a {
+    color: var(--link);
+    font-family: "Faune", sans-serif;
+    z-index: 1;
+}
+
+.text .wp-block-image {
+    margin: 1rem 0rem 1rem 0rem;
+}
+
+.text p {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.6rem;
+}
+
+.text-image {
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    background-color: var(--highlight);
+}
+
+.wp-block-footnotes {
+    margin-top: 1rem !important;
+    margin-left: 0rem !important;
+    list-style: decimal;
+    list-style-position: inside;
+    font-size: .9rem !important;
+    text-align: left;
+}
+
+.wp-block-footnotes li {
+    margin-bottom: 2rem;
+    transition: all 0.3s ease-in-out;
+    overflow-wrap: break-word;
+}
+
+.section-header {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1rem;
+}
+
+.author-hover {
+    cursor: cell;
+}
+
+.text ul {
+    list-style: outside;
+    margin-left: 2rem;
+}
+
+.text ul li {
+    margin-bottom: .5rem;
+}
+
+
+/* ---------------- SINGLE PAGE ---------------- */
+.nav-darkener {
+    height: 126px;
+}
+
+.single-page .content {
+    /*     margin:2rem 0px; */
+}
+
+.single-page-title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.single-page p {
+    margin-bottom: 2rem;
+}
+
+.single-page img {
+    margin-bottom: 2rem;
+}
+
+.wp-block-image figcaption {
+    margin-top: -2rem;
+    text-align: center;
+    font-size: .8rem;
+    margin-bottom: 1rem;
+}
+
+
+/* ---------------- SINGLE POST ---------------- */
+.single .hero .author {
+    /* font-size:1.5rem; */
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.single-title {
+    line-height: 1.4;
+}
+
+.single-post {
+    /*     margin-bottom:1rem; */
+}
+
+.back-link-wrapper {
+    margin-bottom: 1rem;
+}
+
+.back-link {
+    font-family: "Faune", serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    padding-left: 1rem;
+    margin-top: 1rem;
+}
+
+.back-link:hover {
+    padding-left: 0rem;
+    display: block;
+    animation: wave 2s steps(10) infinite;
+}
+
+.single-image-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    text-shadow: 2px 2px 3px #000000;
+}
+
+.single-caption {
+    margin-top: .5rem;
+    text-align: center;
+}
+
+.single-caption *:hover {
+    /* just unsetting the existing hovering stuff */
+    cursor: auto;
+    opacity: .5;
+}
+
+.single-post .date {
+    font-size: .8rem;
+    text-shadow: none;
+    /* color: #000; */
+    opacity: .5;
+}
+
+/* ---------------- INTERVIEW PAGES (BSA) ---------------- */
+
+.interview-columns {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0;
+}
+
+.interview-columns .wp-block-column {
+    margin: 0;
+    margin-top: 1.5rem;
+    padding: 0;
+    display: block;
+    /* Ensure content stacks as block elements */
+}
+
+.interview-columns .wp-block-column:first-child {
+    flex: 0 0 auto;
+    padding: 0 2rem;
+}
+
+.interview-columns .wp-block-column:nth-child(2) {
+    flex: 1;
+    display: block;
+    /* Ensure paragraphs stack correctly */
+}
+
+.interview-columns .wp-block-column p {
+    margin-bottom: 1.5rem;
+    /* Add some spacing between paragraphs */
+}
+
+.interview-columns:nth-child(2n) {
+    margin-left: 1.5rem;
+}
+
+.interview-columns h2 {
+    margin: 0px;
+    text-align: left;
+}
+
+
+/* custom caption stuff */
+.figure-numbers {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+    /* Ensure text is left-aligned */
+    display: inline-block;
+    /* Shrink to fit the content */
+}
+
+.figure-numbers li {
+    padding-left: 3rem;
+    /* Create space for numbers */
+    text-indent: -3rem;
+    /* Move the text back into place */
+    opacity: .5;
+    list-style-type: none;
+    font-size: .8rem;
+}
+
+.figure-numbers li::before {
+    content: attr(data-number) ".\00a0";
+    /* Add the number with a non-breaking space */
+    display: inline-block;
+    width: 3rem;
+    /* Fixed width to align text */
+    text-align: right;
+    /* Align the number to the right */
+    font-feature-settings: "tnum";
+    /* Optional: Enable tabular numbers for consistent number width */
+    margin-right: 1rem;
+}
+
+/* community quotes for BSA page */
+
+.community-quotes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+.community-quotes-container span {
+    font-weight: 500;
+    font-style: italic;
+    color: #666;
+    margin-left: .5rem;
+}
+
+.community-quote {
+    background-color: #cde;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.community-quote:nth-child(odd) {
+    /* margin-left: 2rem; */
+
+}
+
+/* ---------------- IMAGE GALLERY ---------------- */
+
+@media all and (max-width:768px) {
+    .wp-block-gallery .wp-block-image {
+        width: 100% !important;
+    }
+}
+
+.wp-block-gallery {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.wp-element-caption {
+    text-shadow: 2px 2px 3px #000000;
+}
+
+/* ---------------- FOOTER and SOCIAL ---------------- */
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow items to wrap */
+    align-items: center;
+    justify-content: space-between;
+    /* Ensure content is spaced evenly */
+}
+
+/* Default styles and ordering on small screens */
+.footer>* {
+    flex: 1 1 100%;
+    /* Stack on smaller screens */
+    margin: 0.5rem 0;
+}
+
+.social {
+    text-align: center;
+    /* Center align icons on smaller screens */
+    order: -1;
+    /* Display social icons first on small screens */
+}
+
+.copyright {
+    order: 0;
+    text-align: center;
+}
+
+/* Style for individual social icons */
+.social-icon {
+    margin: 0 5px;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.social-icon img {
+    height: 1.25rem;
+    fill: #fff;
+}
+
+.fab {
+    font-size: 1.5rem;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+    .footer {
+        flex-wrap: nowrap;
+        /* No wrapping on larger screens */
+        justify-content: space-between;
+        /* Spread items on larger screens */
+    }
+
+    .footer>* {
+        flex: 1;
+        /* Distribute space equally */
+        margin: 0;
+        /* Reset margin for even distribution */
+    }
+
+    .social {
+        text-align: right;
+        /* Align to right on larger screens */
+        order: 2;
+        /* Adjust order for larger screens */
+    }
+
+    .social-icon {
+        margin: 0 .5rem;
+    }
+
+    .copyright {
+        text-align: left;
+        /* Align to left on larger screens */
+        order: 1;
+        /* Adjust order for larger screens */
+    }
+}
+
+
+/* Media query for mobile screens */
+@media screen and (max-width: 768px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .wp-block-heading {
+        text-align: center;
+    }
+
+
+    .menu-toggle,
+    .menu-toggle-dropper {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        transition: all 0.3s;
+    }
+
+    .logo img {
+        max-width: 94%;
+    }
+
+    .menu-expanded .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        /* background-color: #333; */
+        top: 100px;
+        left: 0;
+        width: 100%;
+
+        /* display: none; */
+    }
+
+    .menu-expanded .nav-menu li {
+        margin: 0;
+        padding: 16px 20px;
+        /* border-bottom: 1px solid #555; */
+    }
+
+    .menu-expanded .toggle-icon::before {
+        content: "\f00d";
+    }
+
+    .nav-container-dropper .nav-menu {
+        background-color: #fff;
+    }
+
+    .pdf.flex {
+        flex-direction: column;
+    }
+
+    .pdf-link {
+        margin: 0 auto;
+    }
+
+    .water-story {
+        opacity: 1;
+        background-color: #000;
+    }
+
+    .water-story-image {
+        opacity: .85;
+    }
+
+    .slide-title {
+        font-size: 1.6rem;
+    }
+
+    .slide-author {
+        /* font-size: 1.4rem;  */
+        font-size: 1.2rem;
+    }
+
+    .text,
+    .text p {
+        text-align: left;
+    }
+
+    .photo-attribution {
+        opacity: .7;
+    }
+
+    .image-overlay-text {
+        padding: 0px 1rem 1rem 1rem;
+    }
+
+    .quote {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .blurb {
+        line-height: 1.2rem;
+        text-align: justify;
+    }
+
+
+}
+
+.wp-block-image img {
+    width: 100%;
+}
+
+.indent {
+    text-indent: 2rem;
+}
+
+/* ---------------- INDEX ---------------- */
+
+.index-section {
+    padding: 2rem;
+}
+
+.index-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.index-menu {
+    flex: 1;
+    min-width: 250px;
+}
+
+.index-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.index-menu ul ul {
+    padding-left: 1.5rem;
+}
+
+.index-menu .sub-menu {
+    display: none;
+}
+
+.index-menu .has-children.open > .sub-menu {
+    display: block;
+}
+
+.index-menu .has-children > a {
+    position: relative;
+    cursor: pointer;
+}
+
+.index-menu .has-children > a::before {
+    content: '▸';
+    display: inline-block;
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s;
+}
+
+.index-menu .has-children.open > a::before {
+    transform: translateY(-50%) rotate(90deg);
+}
+
+.index-menu a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 0.25rem 0;
+}
+
+.index-menu a.active {
+    font-weight: bold;
+}
+
+.index-content {
+    flex: 3;
+    transition: height 0.4s ease-in-out;
+    overflow: hidden;
+}
+
+.index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.index-grid-item {
+    transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+    transform: scale(1);
+    opacity: 1;
+}
+
+.index-grid-item.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    display: none;
+}
+
+.index-grid-item a {
+    display: block;
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+}
+
+.index-grid-item-image {
+    width: 100%;
+    padding-bottom: 100%; /* 1:1 Aspect Ratio */
+    background-size: cover;
+    background-position: center;
+}
+
+.index-grid-item-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.index-grid-item-text p {
+    margin: 0;
+    padding: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.index-grid-item-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding-bottom: 0.25rem;
+}
+
+.index-list-item .mobile-author {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .index-container {
+        flex-direction: column;
+    }
+}
